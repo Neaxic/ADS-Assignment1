@@ -4,7 +4,7 @@ import java.util.EmptyStackException;
 
 public class LinkedStack<T> implements Stack<T> {
 
-    private LinkedList<T> list;
+    private LinkedList<T> list = new LinkedList<T>();
 
     @Override
     public boolean IsEmpty() {
@@ -12,21 +12,23 @@ public class LinkedStack<T> implements Stack<T> {
     }
 
     @Override
-    public void push(T ele) {
-        list.addToFront(ele);
+    public void push(T element) {
+        list.addToFront(element);
     }
 
     @Override
     public T pop() throws EmptyStackException {
         {
+            T tempList;
             if (list.isEmpty()) {
                 throw new EmptyStackException();
             }
             else {
-                list.removeFirst();
+                tempList = list.removeFirst();
+                System.out.println(tempList);
             }
+            return tempList;
         }
-        return (T) list;
     }
 
 }

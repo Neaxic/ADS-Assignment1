@@ -4,41 +4,61 @@ public class LinkedList<T> implements List<T>{
 
 
     private Node<T> head;
-    int size;
+    int size = 0;
 
-    public int findSize(){
-        Node temp = head;
-        int length = 0;
-        for(temp = head; temp!=null; temp=temp.getNextNode()){
-            length++;
-        }
-        return length;
-    }
+
 
 
     @Override
     public boolean isEmpty() {
-        if (findSize() == 0) {
+        if (size == 0) {
             return true;
         } else return false;
     }
 
     @Override
     public int size() {
-        return findSize();
+        return size();
     }
 
     @Override
     public void addToFront(T data) {
-        head.setNextNode(head);
-        head = new Node<T> (data);
+        Node<T> nHead = new Node<T>(data);
+        nHead.setNextNode(head);
+        head = nHead;
+        size++;
+
+        System.out.println("Linked List size: " + size);
     }
 
     @Override
     public T removeFirst() {
-        if (findSize() == 0) {
+     /*   T temp = null;
+        if (findSize() != 0) {
+            temp = head;
             head = head.getNextNode();
         }
         return head.getData();
-    }
+
+      */
+
+        T data = head.getData();
+        if(head.getNextNode() == null)
+        {
+            head = null;
 }
+        else
+        {
+            head.setData(head.getNextNode().getData());
+            head.setNextNode(head.getNextNode().getNextNode());
+        }
+        size--;
+        return data;
+    }
+
+
+
+
+
+    }
+
