@@ -7,16 +7,17 @@ public class CalculatorVisitor implements Visitor, Calculator {
         tokenStack.push(operand);
     }
 
-    private void performOperation(Operand operand){
+    private void performOperation(Operand operand) throws MalformedExpressionException {
         int result;
         //udregn operation fra stack
         tokenStack.pop();
+
         operand.getValue(); // fx: +, -, *, /
     }
 
     @Override
     public void visit(Operand operand) {
-
+        pushOperand(operand);
     }
 
     @Override

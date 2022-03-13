@@ -1,4 +1,4 @@
 public interface Calculator {
 
-    public int getResult();
+    public int getResult() throws MalformedExpressionException;
 }
